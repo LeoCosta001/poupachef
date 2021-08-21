@@ -1,0 +1,14 @@
+//Reset
+@import './global/resetStyle.scss';
+
+//Variables
+@import './variables/layoutColors.scss';
+
+//Global
+@import './global/global.scss';
+
+
+//Pages
+@import '../screens/Login/styles.scss';
+
+//Components
