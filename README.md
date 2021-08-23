@@ -23,6 +23,8 @@
 
 - [React](https://reactjs.org/)
 - [Sass](https://sass-lang.com/documentation/syntax)
+- API Rest: Axios.
+- Outras Libs/APIs: React Router Dom.
 
 ## Projeto
 
