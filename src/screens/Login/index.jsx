@@ -1,32 +1,45 @@
 import React, { useState } from 'react';
-// import { useAuth0 } from '@auth0/auth0-react';
 import ThemeContext from '../../themes/context';
 import InputDefault from '../../components/InputDefault';
 import api from '../../services/api';
 
-function Login() {
 
-  // const { loginWithRedirect } = useAuth0();
-  const [ userEmail, setUserEmail ] = useState(null);
+
+
+function Login({ history }) {
+
+  
+  const [ username, setUsername ] = useState(null);
   const [ password, setPassword ] = useState(null);
 
 
   async function handleLogin (e) {
     e.preventDefault();
 
-    if(!userEmail || !password) {
-      setUserEmail('');
+    if(!username || !password) {
+      setUsername('');
       setPassword('');
       window.alert('Insira todos os dados do login');
       return;
     }
 
-    try {
-      const response = await api.post('/oauth/token', {
-        userEmail,
-        password
-      })
-      console.log(response);
+    try { 
+      const formData = new FormData();
+      formData.append('grant_type', 'password');
+      formData.append('username', username);
+      formData.append('password', password);
+      formData.append('scope', 'web');
+
+      const response = await api.post('/oauth/token', formData, {
+        auth: {
+          username: process.env.REACT_APP_USERNAME,
+          password: process.env.REACT_APP_PASSWORD, 
+        },
+      });
+
+      localStorage.setItem('user', JSON.stringify(response.data))
+      history.push('/suppliers')
+
 
     } catch (error) {
       console.log(error);
@@ -40,15 +53,17 @@ function Login() {
         <section className={`${theme} login__wrapper`}>
           <div className="login__container">
             <h2 className="login__title">Login</h2>
-            <div className="login__input">
-              <InputDefault title="Email" type="email" placeholder="Email" onChange={(e) => { setUserEmail(e.currentTarget.value) }} />
-              <InputDefault title="Senha" type="password" placeholder="Senha" onChange={(e) => {setPassword(e.currentTarget.value) }} />
-            </div>
-            <div className="login__containerBtn">
-              <button className="login__btn" onClick={handleLogin}>
-                Sign In
-              </button>
-            </div>
+            <form>
+              <div className="login__input">
+                <InputDefault title="Username" type="text" placeholder="Username" onChange={(e) => { setUsername(e.currentTarget.value) }} />
+                <InputDefault title="Senha" type="password" placeholder="Senha" onChange={(e) => {setPassword(e.currentTarget.value) }} />
+              </div>
+              <div className="login__containerBtn">
+                <button className="login__btn" onClick={handleLogin}>
+                  Sign In
+                </button>
+              </div>
+            </form>
           </div>  
         </section>
 

@@ -5,7 +5,7 @@ import PrivateRoute from './auth/privateRouter';
 import Login from './screens/Login/index.jsx';
 import ListSuppliers from './screens/ListSuppliers/index.jsx';
 import SupplierDetail from './screens/SupplierDetail/index.jsx';
-
+import NotFound from './screens/NotFound';
 
 
 function Routes() {
@@ -15,6 +15,7 @@ function Routes() {
         <Route exact path="/" component={Login} />
         <PrivateRoute path="/suppliers" component={ListSuppliers} />
         <PrivateRoute path="/supplierDetail" component={SupplierDetail} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </Router>
   )

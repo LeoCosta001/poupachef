@@ -12,8 +12,6 @@ function App() {
     setTheme(theme === 'light' ? 'dark' : 'light' );
   }
 
-  console.log(localStorage);
-
   return (
     <div className="App">
       <ThemeContext.Provider value={theme}>

@@ -14,7 +14,7 @@
     min-height: 370px;
     box-shadow: 0 0 0 1px rgba(8, 9, 10, 0.193);
     border-radius: 5px;
-
+    
     .login__title {
       font-size: 2em;
       font-weight: 700;
@@ -22,24 +22,26 @@
       width: 90%;
       margin-top: 30px;
     }
-
-    .login__input {
+    form {
       width: 90%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .login__containerBtn {
-      width: 90%;
-      display: flex;
-      margin-top: 25px;
-
-      .login__btn {
-        border-radius: 5px;
-        min-width: 100%;
-        height: 40px;
-        font-weight: 600;
-        cursor: pointer;
+  
+      .login__input {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+  
+      .login__containerBtn {
+        display: flex;
+        margin-top: 25px;
+  
+        .login__btn {
+          border-radius: 5px;
+          min-width: 100%;
+          height: 40px;
+          font-weight: 600;
+          cursor: pointer;
+        }
       }
     }
   }
