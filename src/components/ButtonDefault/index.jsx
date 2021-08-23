@@ -1,10 +1,10 @@
 import React from 'react';
 
-function ButtonDefault({ text, action }) {
+function ButtonDefault({ link, text, action }) {
   return ( 
-    <button className="BtnDefault" onClick={() => action()}>
+    <a href={link} className="BtnDefault" onClick={() => action}>
       {text}
-    </button>
+    </a>
   )
 }
 

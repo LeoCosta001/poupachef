@@ -3,12 +3,8 @@ import ThemeContext from '../../themes/context';
 import InputDefault from '../../components/InputDefault';
 import api from '../../services/api';
 
-
-
-
 function Login({ history }) {
 
-  
   const [ username, setUsername ] = useState(null);
   const [ password, setPassword ] = useState(null);
 

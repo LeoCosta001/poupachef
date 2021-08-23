@@ -1,42 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import ThemeContext from '../../themes/context';
-import { useParams } from "react-router-dom";
-import api from '../../services/api';
-import InputDefault from '../../components/InputDefault/index';
-
-function SupplierDetail() {
-  const [userDate, setUserDate] = useState({});
-  const params = useParams();
-
-
-  async function getDateUser() {
-    try {
-      const userString = localStorage.getItem('user');
-      const token = JSON.parse(userString);
-
-      const config = {
-        headers: { Authorization: `Bearer ${token.access_token}` }
-      }
-
-      const { supplierPublicId } = params;
-      const theUserDate = await api.get(`/suppliers/${supplierPublicId}`, config);
-      setUserDate(theUserDate.data)
-
-    } catch(error) {
-      console.log(error);
-    } 
-  }
-
-  useEffect(() => {
-    getDateUser();
-  },[]);
-
-  console.log(userDate);
-  return (
-    <ThemeContext.Consumer>
-      {theme => (
-        userDate &&
-        <div className={`${theme} SupplierDetail__wrapper`}>
+<div className={`${theme} SupplierDetail__wrapper`}>
           <div className="SupplierDetail__header">
             <h2>Detalhes do fornecedor</h2>
             <button className="SupplierDetail__header-btn">Submit</button>
@@ -46,7 +8,7 @@ function SupplierDetail() {
             <div className="SupplierDetail__section-container">
               <div className="Input__organization SupplierDetail__section-details">
                 
-                <InputDefault title="Nome" type="text" placeholder="Nome" value={userDate.name} />
+                <InputDefault title="Nome" type="text" placeholder="Nome"  />
 
                 <InputDefault title="CNPJ" type="text" placeholder="CNPJ" value={userDate.cnpj} />
       
@@ -91,9 +53,3 @@ function SupplierDetail() {
             </div>
           </div>
         </div>
-      )}
-    </ThemeContext.Consumer>
-  )
-}
-
-export default SupplierDetail;

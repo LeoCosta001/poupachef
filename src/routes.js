@@ -14,7 +14,7 @@ function Routes() {
       <Switch>
         <Route exact path="/" component={Login} />
         <PrivateRoute path="/suppliers" component={ListSuppliers} />
-        <PrivateRoute path="/supplierDetail" component={SupplierDetail} />
+        <PrivateRoute path="/supplierDetail/:supplierPublicId" component={SupplierDetail} />
         <Route path='*' component={NotFound} />
       </Switch>
     </Router>

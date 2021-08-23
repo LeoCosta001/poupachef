@@ -1,0 +1,40 @@
+.NotFound__wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+
+  .NotFound__wrapper__title {
+    text-align: center;
+    font-size: 3em;
+  }
+
+  .NotFound__wrapper__errorCode {
+    font-size: 2em;
+    margin-top: 20px;
+  }
+
+  span  {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    border: 20px solid rgba(162, 162, 162, 0.487);
+    border-radius: 15px;
+    bottom: 10%;
+    left: 20%;
+    transform: rotate(30deg);
+
+    &:last-child {
+      width: 70px;
+      height: 70px;
+      top: 15%;
+      left: initial;
+      right: 20%;
+    }
+
+  }
+}

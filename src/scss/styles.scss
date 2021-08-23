@@ -12,11 +12,13 @@
 @import '../screens/Login/styles.scss';
 @import '../screens/ListSuppliers/styles.scss';
 @import '../screens/SupplierDetail/styles.scss';
+@import '../screens/NotFound/styles.scss';
 
 //Components
 @import '../components/Header/styles.scss';
 @import '../components/ButtonDefault/styles.scss';
 @import '../components/InputDefault/styles.scss';
+@import '../components/ListTable/styles.scss';
 
 //themes
 @import '../themes/dark.scss';

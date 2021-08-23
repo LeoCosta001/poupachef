@@ -1,127 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import api from '../../services/api';
 import ThemeContext from '../../themes/context';
-
-import ButtonDefault from '../../components/ButtonDefault/index';
+import ListTable from '../../components/ListTable/index';
 
 function ListSuppliers() {
+
+  const [listSuppliers, setListSuppliers] = useState([]);
+
+  async function getDataList() {
+    
+    try {
+      const userString = localStorage.getItem('user');
+      const token = JSON.parse(userString);
+
+      const config = {
+        headers: { Authorization: `Bearer ${token.access_token}` }
+      }
+      
+      const responseList = await api.get('/suppliers', config);
+
+      setListSuppliers(responseList.data);
+      
+
+    } catch(error) {
+      console.log(error);
+    }
+    
+  }
+
+  useEffect(() => {
+    getDataList()
+  }, []);
+
   return (
     <ThemeContext.Consumer>
       {theme => (
         <div className={`${theme} ListSuppliers__wrapper`}>
           <h2 className="ListSuppliers__title">Fornecedores</h2>
           <div className="ListSuppliers__table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>CNPJ</th>
-                  <th>Telefone</th>
-                  <th>Proprietario</th>
-                  <th>Editar</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-                <tr>
-                  <th>Robson</th>
-                  <th>999.999.999.99</th>
-                  <th>11 123456789</th>
-                  <th>Bob</th>
-                  <th>
-                    <ButtonDefault text="Edit" />
-                  </th>
-                </tr>
-              </tbody>
-            </table>
+            <ListTable listSuppliers={listSuppliers} />
           </div>
         </div>
       )}
