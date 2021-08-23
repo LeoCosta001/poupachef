@@ -1,8 +1,8 @@
 # PoupaChef
 
-![project language]({https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black})
-![package manager]({https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white})
-![stylesheets preprocessor]({https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white})
+![project language](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![package manager](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)
+![stylesheets preprocessor](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 
 ## 💻 Descrição do Projeto
 <p align="center">Projeto para simular um sistema de listagem de fornecedores.</p>
