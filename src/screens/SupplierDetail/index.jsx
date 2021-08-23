@@ -1,66 +1,69 @@
+import React from 'react';
+import ThemeContext from '../../themes/context';
+
+import InputDefault from '../../components/InputDefault/index';
+
 function SupplierDetail() {
   return (
-    <div className="SupplierDetail">
-      <div className="SupplierDetail__header">
-        <h2>Supplier Details</h2> 
-        <button>Submit</button>
-      </div>
-      <div className="SupplierDetail__sections">
+    <ThemeContext.Consumer>
+      {theme => (
+        <div className={`${theme} SupplierDetail__wrapper`}>
+          <div className="SupplierDetail__header">
+            <h2>Detalhes do fornecedor</h2>
+            <button className="SupplierDetail__header-btn">Submit</button>
+          </div>
+          <div className="SupplierDetail__sections">
 
-        <div className="SupplierDetail__section-details">
-          <div className="SupplierDetail__section-details-container">
-            <label htmlFor="name">Name</label>
-            <input type="text" />
+            <div className="SupplierDetail__section-container">
+              <div className="Input__organization SupplierDetail__section-details">
+                
+                <InputDefault title="Nome" type="text" placeholder="Nome" />
 
-            <label htmlFor="cnpj">CNPJ</label>
-            <input type="text" />
+                <InputDefault title="CNPJ" type="text" placeholder="CNPJ" />
+      
+                <InputDefault title="Telefone" type="text" placeholder="Telefone" />
+              </div>
+            </div>
 
-            <label htmlFor="phone">Phone Number</label>
-            <input type="text"/>
+            <div className="SupplierDetail__section-container">
+              <div className="SupplierDetail__section-Owner">
+                <h2>Proprietario</h2>
+                <div className="Input__organization SupplierDetail__section-Owner-container">
+                  
+                  <InputDefault title="Nome" type="text" placeholder="Nome do proprietario" />
+
+                  <InputDefault title="Email" type="email" placeholder="Email" />
+                  
+                  <InputDefault title="Telefone" type="text" placeholder="Numero de Telefone" />
+
+                </div>
+              </div>
+            </div>
+
+            <div className="SupplierDetail__section-container">
+              <div className="SupplierDetail__section-Address">
+                <h2>Address</h2>
+                <div className="Input__organization SupplierDetail__section-Address">
+                  <InputDefault title="Endereco" type="text" placeholder="Endereço" />
+
+                  <InputDefault title="Numero" type="text" placeholder="Numero da casa" />
+
+                  <InputDefault title="Complemento" type="text" placeholder="Ex: Casa 1..." />
+
+                  <InputDefault title="Bairro" type="text" placeholder="Bairro" />
+
+                  <InputDefault title="Cidade" type="text" placeholder="Cidade" />
+                  
+                  <InputDefault title="Estado" type="text" placeholder="Estado" />
+
+                  <InputDefault title="Codigo-Postal" type="text" placeholder="Codigo Postal" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="SupplierDetail__section-Owner">
-          <h2>Owner</h2>
-          <div className="SupplierDetail__section-Owner-container">
-            <label htmlFor="nameOwner">Name</label>
-            <input type="text" id="nameOwner" />
-
-            <label htmlFor="email">Email</label>
-            <input type="email" />
-
-            <label htmlFor="phone">Phone Number</label>
-            <input type="text"/>
-          </div>
-        </div>
-
-        <div className="SupplierDetail__section-Address">
-          <h2>Address</h2>
-          <div className="SupplierDetail__section-Address">
-            <label htmlFor="address">Address</label>
-            <input type="text" id="address" />
-
-            <label htmlFor="number">Number</label>
-            <input type="text" id="number"/>
-
-            <label htmlFor="complement">Complement</label>
-            <input type="text" id="complement"/>
-
-            <label htmlFor="neighborhood">Neighborhood</label>
-            <input type="text" id="neighborhood"/>
-
-            <label htmlFor="city">City</label>
-            <input type="text" id="city"/>
-
-            <label htmlFor="state">State</label>
-            <input type="text" id="state"/>
-
-            <label htmlFor="zipCode">Zip Code</label>
-            <input type="text" id="zipCode" />
-          </div>
-        </div>
-      </div>
-    </div>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

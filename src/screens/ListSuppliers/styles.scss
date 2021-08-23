@@ -1,7 +1,9 @@
 .ListSuppliers__wrapper {
   width: 100%;
-  min-width: 100vh;
+  min-height: 100vh;
   padding: 40px;
+
+  padding-top: 100px;
 
   .ListSuppliers__title {
     font-size: 2em;
@@ -23,18 +25,17 @@
     }
     
     tbody {
+      
 
-      &>tr:nth-of-type(odd) {
-        background-color: rgba(0, 0, 0, 0.05);
-        color: #212529;
+      th {
+        font-weight: 400;
+
       }
 
-        button {
-          background-color: #fff;
-          padding: 5px;
-          border: 1px solid #000;
-          cursor: pointer;
-        }
+      // &>tr:nth-of-type(odd) {
+      //   background-color: rgba(0, 0, 0, 0.05);
+      //   color: #212529;
+      // }
     }
   }
 }

@@ -1,17 +1,20 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import PrivateRoute from './auth/privateRouter';
 
 //pages
 import Login from './screens/Login/index.jsx';
 import ListSuppliers from './screens/ListSuppliers/index.jsx';
 import SupplierDetail from './screens/SupplierDetail/index.jsx';
 
+
+
 function Routes() {
   return (
     <Router>
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/suppliers" component={ListSuppliers} />
-        <Route path="/supplierDetail" component={SupplierDetail} />
+        <Route exact path="/" component={Login} />
+        <PrivateRoute path="/suppliers" component={ListSuppliers} />
+        <PrivateRoute path="/supplierDetail" component={SupplierDetail} />
       </Switch>
     </Router>
   )

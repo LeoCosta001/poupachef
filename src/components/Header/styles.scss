@@ -1,4 +1,19 @@
 .Header__wrapper {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  max-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  z-index: 1;
+
+  .Header__title {
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+
   .Header__switch {
     position: relative;
     display: inline-block;

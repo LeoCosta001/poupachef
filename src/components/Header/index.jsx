@@ -1,13 +1,20 @@
-import React from 'react'
+import React from 'react';
+import ThemeContext from '../../themes/context';
 
-function Header() {
+function Header({ toggleTheme }) {
+  
   return (
-    <div className="Header__wrapper">
-      <label className="Header__switch">
-        <input type="checkbox" />
-        <span className="Header__slider Header__round"></span>
-      </label>
-    </div>
+    <ThemeContext.Consumer>
+      {theme => (
+        <div className={`${theme} Header__wrapper`}>
+          <h1 className="Header__title">{`<PoupaChefe/>`}</h1>
+          <label className="Header__switch">
+            <input type="checkbox" onClick={toggleTheme}/>
+            <span className="Header__slider Header__round"></span>
+          </label>
+        </div>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

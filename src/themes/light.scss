@@ -1,0 +1,27 @@
+.light {
+  color: #333;
+  background-color: #FFFFFF;
+  transition: .50s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  tbody {
+    &>tr:nth-of-type(odd)  {
+      background-color: #e4e4e4;
+    }
+  
+  }
+
+  button {
+    background-color: #5f7eff;
+    box-shadow: 0px 8px 15px rgba(95, 127, 255, 0.159);
+    color: #eee;
+    cursor: pointer;
+  }
+
+  input {
+    border-color: rgba(204, 204, 204, 0.618);
+
+    &:focus {
+      border-color: #5f7eff;
+    }
+  }
+}
