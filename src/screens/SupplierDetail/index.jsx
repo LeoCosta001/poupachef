@@ -3,10 +3,14 @@ import ThemeContext from '../../themes/context';
 import { useParams } from "react-router-dom";
 import api from '../../services/api';
 import InputDefault from '../../components/InputDefault/index';
+// import { useNavigate } from 'react-router-dom';
 
 function SupplierDetail() {
+  // const navigate = useNavigate();
   const [userDate, setUserDate] = useState({});
   const params = useParams();
+
+
 
 
   async function getDateUser() {
@@ -28,10 +32,9 @@ function SupplierDetail() {
   }
 
   useEffect(() => {
-    getDateUser();
+    getDateUser()
   },[]);
 
-  console.log(userDate);
   return (
     <ThemeContext.Consumer>
       {theme => (
@@ -46,7 +49,7 @@ function SupplierDetail() {
             <div className="SupplierDetail__section-container">
               <div className="Input__organization SupplierDetail__section-details">
                 
-                <InputDefault title="Nome" type="text" placeholder="Nome" value={userDate.name} />
+                <InputDefault title="Nome" type="text" placeholder="Nome" Value={userDate.name} />
 
                 <InputDefault title="CNPJ" type="text" placeholder="CNPJ" value={userDate.cnpj} />
       

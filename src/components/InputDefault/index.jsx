@@ -2,7 +2,7 @@ import React from 'react';
 
 function InputDefault(props) {
 
-  const { title, type, placeholder, ...newProps} = props;
+  const { Value, title, type, placeholder, ...newProps} = props;
 
   return (
     <div className="InputDefault__wrapper">
@@ -13,6 +13,7 @@ function InputDefault(props) {
         type={type}
         placeholder={placeholder}
         autoComplete='off'
+        value={Value}
         {...newProps}
       />
     </div>
