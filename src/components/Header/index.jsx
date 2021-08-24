@@ -1,7 +1,7 @@
 import React from 'react';
 import ThemeContext from '../../themes/context';
 
-function Header({ toggleTheme }) {
+function Header({ toggleTheme, Theme }) {
   
   return (
     <ThemeContext.Consumer>
@@ -9,7 +9,7 @@ function Header({ toggleTheme }) {
         <div className={`${theme} Header__wrapper`}>
           <h1 className="Header__title">{`<PoupaChefe/>`}</h1>
           <label className="Header__switch">
-            <input type="checkbox" onClick={toggleTheme}/>
+            <input type="checkbox" onClick={toggleTheme} defaultChecked={Theme === 'light'}/>
             <span className="Header__slider Header__round"></span>
           </label>
         </div>
