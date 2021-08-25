@@ -3,13 +3,12 @@ import ThemeContext from '../../themes/context';
 import { useParams } from "react-router-dom";
 import api from '../../services/api';
 import InputDefault from '../../components/InputDefault/index';
-// import { useNavigate } from 'react-router-dom';
 
 function SupplierDetail() {
-  // const navigate = useNavigate();
+  const params = useParams(); 
+  
   const [userDate, setUserDate] = useState({});
-  const params = useParams();
-
+  const [nameSupplier, setNameSupplier ] = useState(null);
 
 
 
@@ -31,9 +30,33 @@ function SupplierDetail() {
     } 
   }
 
+  function handleChange (element, value) {
+    switch (element) {
+      case 'nameSupplier':
+        console.log("acionou");
+        setNameSupplier(value)
+        break
+
+      // case 'nameSupplier':
+      //   setNameSupplier(value)
+      //   break
+
+      // case 'nameSupplier':
+      //   setNameSupplier(value)
+      //   break
+
+      // case 'nameSupplier':
+      //   setNameSupplier(value)
+      //   break
+
+      default:
+        break
+    }
+  }
+
   useEffect(() => {
     getDateUser()
-  },[]);
+  }, []);
 
   return (
     <ThemeContext.Consumer>
@@ -49,11 +72,30 @@ function SupplierDetail() {
             <div className="SupplierDetail__section-container">
               <div className="Input__organization SupplierDetail__section-details">
                 
-                <InputDefault title="Nome" type="text" placeholder="Nome" Value={userDate.name} />
+                <InputDefault 
+                  title="Nome" 
+                  type="text" 
+                  placeholder="Nome" 
+                  value={nameSupplier || userDate.name} 
+                  onChange={e => handleChange('nameSupplier', e.currentTarget.value)} 
+                />
 
-                <InputDefault title="CNPJ" type="text" placeholder="CNPJ" value={userDate.cnpj} />
+                <InputDefault 
+                  title="CNPJ" 
+                  type="text" 
+                  placeholder="CNPJ" 
+                  value={userDate.cnpj} 
+                  onChange={e => handleChange('cnpj', e.currentTarget.value)}
+                />
       
-                <InputDefault title="Telefone" type="text" placeholder="Telefone" value={userDate.phoneNumber} />
+                <InputDefault 
+                  title="Telefone" 
+                  type="text" 
+                  placeholder="Telefone" 
+                  value={userDate.phoneNumber}
+                  onChange={e => handleChange('phoneSupplier', e.currentTarget.value)}
+                />
+
               </div>
             </div>
 
@@ -62,11 +104,29 @@ function SupplierDetail() {
                 <h2>Proprietario</h2>
                 <div className="Input__organization SupplierDetail__section-Owner-container">
                   
-                  <InputDefault title="Nome-Proprietario" type="text" placeholder="Nome do proprietario" value={userDate.ownerName} />
+                  <InputDefault 
+                    title="Nome-Proprietario" 
+                    type="text" 
+                    placeholder="Nome do proprietario" 
+                    value={userDate.ownerName} 
+                    onChange={e => handleChange('ownerName', e.currentTarget.value)}
+                  />
 
-                  <InputDefault title="Email" type="email" placeholder="Email" value={userDate.ownerEmail} />
+                  <InputDefault 
+                    title="Email" 
+                    type="email" 
+                    placeholder="Email" 
+                    value={userDate.ownerEmail} 
+                    onChange={e => handleChange('ownerEmail', e.currentTarget.value)}
+                  />
                   
-                  <InputDefault title="Telefone-Proprietario  " type="text" placeholder="Numero de Telefone" value={userDate.ownerPhoneNumber} />
+                  <InputDefault 
+                    title="Telefone-Proprietario" 
+                    type="text" 
+                    placeholder="Numero de Telefone" 
+                    value={userDate.ownerPhoneNumber} 
+                    onChange={e => handleChange('ownerPhone', e.currentTarget.value)}
+                  />
 
                 </div>
               </div>
@@ -74,21 +134,66 @@ function SupplierDetail() {
 
             <div className="SupplierDetail__section-container">
               <div className="SupplierDetail__section-Address">
-                <h2>Address</h2>
+                <h2>Endereço</h2>
                 <div className="Input__organization SupplierDetail__section-Address">
-                  <InputDefault title="Endereco" type="text" placeholder="Endereço" value={userDate.address} />
 
-                  <InputDefault title="Numero" type="text" placeholder="Numero da casa" value={userDate.number} />
+                  <InputDefault 
+                    title="Endereco" 
+                    type="text" 
+                    placeholder="Endereço" 
+                    value={userDate.address} 
+                    onChange={e => handleChange('address', e.currentTarget.value)}
+                  />
 
-                  <InputDefault title="Complemento" type="text" placeholder="Ex: Casa 1..." value={userDate.complement} />
+                  <InputDefault 
+                    title="Numero" 
+                    type="text" 
+                    placeholder="Numero da casa" 
+                    value={userDate.number} 
+                    onChange={e => handleChange('number', e.currentTarget.value)}
+                  />
 
-                  <InputDefault title="Bairro" type="text" placeholder="Bairro" value={userDate.neighborhood} />
+                  <InputDefault 
+                    title="Complemento" 
+                    type="text" 
+                    placeholder="Ex: Casa 1..." 
+                    value={userDate.complement} 
+                    onChange={e => handleChange('complement', e.currentTarget.value)}
+                  />
 
-                  <InputDefault title="Cidade" type="text" placeholder="Cidade" value={userDate.city} />
+                  <InputDefault 
+                    title="Bairro" 
+                    type="text" 
+                    placeholder="Bairro" 
+                    value={userDate.neighborhood} 
+                    onChange={e => handleChange('neighborhood', e.currentTarget.value)}
+                  />
+
+                  <InputDefault 
+                    title="Cidade" 
+                    type="text" 
+                    placeholder="Cidade" 
+                    value={userDate.city} 
+                    onChange={e => handleChange('city', e.currentTarget.value)}
+                  />
                   
-                  <InputDefault title="Estado" type="text" placeholder="Estado" value={userDate.state} />
 
-                  <InputDefault title="Codigo-Postal" type="text" placeholder="Codigo Postal" value={userDate.zipCode} />
+                  <InputDefault 
+                    title="Estado" 
+                    type="text" 
+                    placeholder="Estado" 
+                    value={userDate.state} 
+                    onChange={e => handleChange('state', e.currentTarget.value)}
+                  />
+
+                  <InputDefault 
+                    title="Codigo-Postal" 
+                    type="text" 
+                    placeholder="Codigo Postal" 
+                    value={userDate.zipCode} 
+                    onChange={e => handleChange('zipCode', e.currentTarget.value)}
+                  />
+
                 </div>
               </div>
             </div>
