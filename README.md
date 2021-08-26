@@ -17,6 +17,18 @@
 ## Objetivo
 <p> 🚀 Projeto feito para compor um teste direcionado a vaga de frontend, e tendo como base a construção de uma aplicação CRUD simulando requisições de dados de fornecedores de produtos.</p>
 
+## Funcionalidades
+- [x] Fazer Requisiçâo GET.
+- [x] Fazer Requisiçâo POST.
+- [ ] Fazer Requisiçâo PUT.
+- [ ] Fazer Requisiçâo DELETE.
+- [ ] Token expirado retorna para tela de login.
+- [x] Fazer requisições com autenticação de token.
+- [x] Tema Claro e Tema Escuro (salvos no localStorage).
+<p>
+<em>_Nota: Os itens com check foram concluidos_</em>
+</p>
+ 
 ## Tecnologias
 
 🛠 As seguintes ferramentas foram usadas na construção deste projeto:
