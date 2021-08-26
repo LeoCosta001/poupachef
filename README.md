@@ -8,16 +8,20 @@
 <p align="center">Projeto para simular um sistema de listagem de fornecedores.</p>
 
 <p align="center">
- <a href="#objetivo">Objetivo</a> •
- <a href="#tecnologias">Tecnologias</a> • 
- <a href="#projeto">Como utilizar este projeto</a> • 
- <a href="#desenvolvedor">Autor</a>
+ <a href="#obj">Objetivo</a> •
+ <a href="#func">Funcionalidades</a> •
+ <a href="#tec">Tecnologias</a> • 
+ <a href="#proj">Como utilizar este projeto</a> •  
+ <a href="#observacoes">Observações</a> •
+ <a href="#dev">Autor</a> 
 </p>
 
-## Objetivo
+## <p id="obj">Objetivo</p>
+
 <p> 🚀 Projeto feito para compor um teste direcionado a vaga de frontend, e tendo como base a construção de uma aplicação CRUD simulando requisições de dados de fornecedores de produtos.</p>
 
-## Funcionalidades
+## <p id="func">Funcionalidades</p>
+
 - [x] Fazer Requisiçâo GET.
 - [x] Fazer Requisiçâo POST.
 - [ ] Fazer Requisiçâo PUT.
@@ -29,7 +33,7 @@
 <em>_Nota: Os itens com check foram concluidos_</em>
 </p>
  
-## Tecnologias
+## <p id="tec">Tecnologias</p>
 
 🛠 As seguintes ferramentas foram usadas na construção deste projeto:
 
@@ -38,7 +42,7 @@
 - API Rest: Axios.
 - Outras Libs/APIs: React Router Dom.
 
-## Projeto
+## <p id="proj">Projeto</p>
 
 ### ⚙️ Pré-requisitos para utilizar este projeto
 
@@ -61,12 +65,20 @@ ou
 $ yarn
 
 # Execute a aplicação em modo de desenvolvimento
-$ npm run serve
+$ npm run start
 ou
 $ yarn start
 
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
 ```
 
-# Desenvolvedor
+## <p id="observacoes">Observações</p>
+
+**Login de acesso:**
+
+- Usuário: teste@teste.com
+- Senha: frontendpassword
+
+# <p id="dev">Desenvolvedor</p>
+
 <p> 👨‍💻 Desenvolvido por <a href="https://www.linkedin.com/in/weslley-ferreira-61a75a188/">Weslley Ferreira de Moraes</a></p>
