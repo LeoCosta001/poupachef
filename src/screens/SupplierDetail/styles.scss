@@ -20,6 +20,16 @@
       height: 40px;
       border-radius: 5px;
       cursor: pointer;
+
+      &:first-child {
+        margin-right: 10px;
+      }
+
+      &.delete {
+        background-color: #d82c2c;
+        color: #eee;
+        box-shadow: 0px 8px 15px rgba(138, 19, 19, 0.4);
+      }
     }
   }
 

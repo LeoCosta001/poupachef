@@ -8,9 +8,81 @@ function SupplierDetail() {
   const params = useParams(); 
   
   const [userDate, setUserDate] = useState({});
-  const [nameSupplier, setNameSupplier ] = useState(null);
+  const [nameSupplier, setNameSupplier] = useState('');
+  const [cnpj, setCnpj] = useState('');
+  const [phoneSupplier, setPhoneSupplier] = useState('');
+  const [ownerName, setOwnerName] = useState('');
+  const [ownerEmail, setOwnerEmail] = useState('');
+  const [ownerPhone, setOwnerPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [number, setNumber] = useState('');
+  const [complement, setComplement] = useState('');
+  const [neighborhood, setNeighborhood] = useState('');
+  const [city, setCity] = useState('');
+  const [dataState, setDataState] = useState('');
+  const [zipCode, setZipCode] = useState('');
 
 
+  function handleChange(element, value) {
+    switch (element) {
+
+      case 'nameSupplier':
+        setNameSupplier(value)
+        break
+
+      case 'cnpj':
+        if(isNaN(value))
+        setCnpj(value)
+        break
+
+      case 'phoneSupplier':
+        setPhoneSupplier(value)
+        break
+
+      case 'ownerName':
+        setOwnerName(value)
+        break
+
+      case 'ownerEmail':
+        setOwnerEmail(value)
+        break
+
+      case 'ownerPhone':
+        setOwnerPhone(value)
+        break
+
+      case 'address':
+        setAddress(value)
+        break
+
+      case 'number':
+        setNumber(value)
+        break
+
+      case 'complement':
+        setComplement(value)
+        break
+
+      case 'neighborhood':
+        setNeighborhood(value)
+        break
+
+      case 'city':
+        setCity(value)
+        break
+
+      case 'dataState':
+        setDataState(value)
+        break
+
+      case 'zipCode':
+        setZipCode(value)
+        break
+
+      default:
+        break
+    }
+  }
 
   async function getDateUser() {
     try {
@@ -24,39 +96,32 @@ function SupplierDetail() {
       const { supplierPublicId } = params;
       const theUserDate = await api.get(`/suppliers/${supplierPublicId}`, config);
       setUserDate(theUserDate.data)
+      setNameSupplier(userDate.name)
+      setCnpj(userDate.cnpj)
+      setPhoneSupplier(userDate.phoneNumber)
+      setOwnerName(userDate.ownerName)
+      setOwnerEmail(userDate.ownerEmail)
+      setOwnerPhone(userDate.ownerPhoneNumber)
+      setAddress(userDate.address)
+      setNumber(userDate.number)
+      setComplement(userDate.complement)
+      setNeighborhood(userDate.neighborhood)
+      setCity(userDate.city)
+      setDataState(userDate.state)
+      setZipCode(userDate.zipCode)
 
     } catch(error) {
       console.log(error);
+
+      //metodo usado por conta da falta da verificação da autenticação
+      localStorage.removeItem("user");
+      window.location.replace('/')
     } 
-  }
-
-  function handleChange (element, value) {
-    switch (element) {
-      case 'nameSupplier':
-        console.log("acionou");
-        setNameSupplier(value)
-        break
-
-      // case 'nameSupplier':
-      //   setNameSupplier(value)
-      //   break
-
-      // case 'nameSupplier':
-      //   setNameSupplier(value)
-      //   break
-
-      // case 'nameSupplier':
-      //   setNameSupplier(value)
-      //   break
-
-      default:
-        break
-    }
   }
 
   useEffect(() => {
     getDateUser()
-  }, []);
+  }, [params, userDate.address, userDate.city, userDate.cnpj, userDate.complement, userDate.name, userDate.neighborhood, userDate.number, userDate.ownerEmail, userDate.ownerName, userDate.ownerPhoneNumber, userDate.phoneNumber, userDate.state, userDate.zipCode]);
 
   return (
     <ThemeContext.Consumer>
@@ -65,7 +130,10 @@ function SupplierDetail() {
         <div className={`${theme} SupplierDetail__wrapper`}>
           <div className="SupplierDetail__header">
             <h2>Detalhes do fornecedor</h2>
-            <button className="SupplierDetail__header-btn">Submit</button>
+            <div className="SupplierDetail__container-btn">
+              <button className="SupplierDetail__header-btn">Atualizar</button> 
+              <button className="SupplierDetail__header-btn delete">Remover</button>
+            </div>
           </div>
           <div className="SupplierDetail__sections">
 
@@ -76,15 +144,15 @@ function SupplierDetail() {
                   title="Nome" 
                   type="text" 
                   placeholder="Nome" 
-                  value={nameSupplier || userDate.name} 
-                  onChange={e => handleChange('nameSupplier', e.currentTarget.value)} 
+                  value={nameSupplier}
+                  onChange={e => handleChange('nameSupplier', e.target.value)} 
                 />
 
                 <InputDefault 
                   title="CNPJ" 
                   type="text" 
                   placeholder="CNPJ" 
-                  value={userDate.cnpj} 
+                  value={cnpj}
                   onChange={e => handleChange('cnpj', e.currentTarget.value)}
                 />
       
@@ -92,7 +160,7 @@ function SupplierDetail() {
                   title="Telefone" 
                   type="text" 
                   placeholder="Telefone" 
-                  value={userDate.phoneNumber}
+                  value={phoneSupplier}
                   onChange={e => handleChange('phoneSupplier', e.currentTarget.value)}
                 />
 
@@ -108,7 +176,7 @@ function SupplierDetail() {
                     title="Nome-Proprietario" 
                     type="text" 
                     placeholder="Nome do proprietario" 
-                    value={userDate.ownerName} 
+                    value={ownerName}
                     onChange={e => handleChange('ownerName', e.currentTarget.value)}
                   />
 
@@ -116,7 +184,7 @@ function SupplierDetail() {
                     title="Email" 
                     type="email" 
                     placeholder="Email" 
-                    value={userDate.ownerEmail} 
+                    value={ownerEmail}
                     onChange={e => handleChange('ownerEmail', e.currentTarget.value)}
                   />
                   
@@ -124,7 +192,7 @@ function SupplierDetail() {
                     title="Telefone-Proprietario" 
                     type="text" 
                     placeholder="Numero de Telefone" 
-                    value={userDate.ownerPhoneNumber} 
+                    value={ownerPhone}
                     onChange={e => handleChange('ownerPhone', e.currentTarget.value)}
                   />
 
@@ -141,7 +209,7 @@ function SupplierDetail() {
                     title="Endereco" 
                     type="text" 
                     placeholder="Endereço" 
-                    value={userDate.address} 
+                    value={address}
                     onChange={e => handleChange('address', e.currentTarget.value)}
                   />
 
@@ -149,7 +217,7 @@ function SupplierDetail() {
                     title="Numero" 
                     type="text" 
                     placeholder="Numero da casa" 
-                    value={userDate.number} 
+                    value={number}
                     onChange={e => handleChange('number', e.currentTarget.value)}
                   />
 
@@ -157,7 +225,7 @@ function SupplierDetail() {
                     title="Complemento" 
                     type="text" 
                     placeholder="Ex: Casa 1..." 
-                    value={userDate.complement} 
+                    value={complement} 
                     onChange={e => handleChange('complement', e.currentTarget.value)}
                   />
 
@@ -165,7 +233,7 @@ function SupplierDetail() {
                     title="Bairro" 
                     type="text" 
                     placeholder="Bairro" 
-                    value={userDate.neighborhood} 
+                    value={neighborhood}
                     onChange={e => handleChange('neighborhood', e.currentTarget.value)}
                   />
 
@@ -173,7 +241,7 @@ function SupplierDetail() {
                     title="Cidade" 
                     type="text" 
                     placeholder="Cidade" 
-                    value={userDate.city} 
+                    value={city}
                     onChange={e => handleChange('city', e.currentTarget.value)}
                   />
                   
@@ -182,7 +250,7 @@ function SupplierDetail() {
                     title="Estado" 
                     type="text" 
                     placeholder="Estado" 
-                    value={userDate.state} 
+                    value={dataState}
                     onChange={e => handleChange('state', e.currentTarget.value)}
                   />
 
@@ -190,7 +258,7 @@ function SupplierDetail() {
                     title="Codigo-Postal" 
                     type="text" 
                     placeholder="Codigo Postal" 
-                    value={userDate.zipCode} 
+                    value={zipCode}
                     onChange={e => handleChange('zipCode', e.currentTarget.value)}
                   />
 

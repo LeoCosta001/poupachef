@@ -24,6 +24,10 @@ function ListSuppliers() {
 
     } catch(error) {
       console.log(error);
+
+      //metodo usado por conta da falta da verificação da autenticação
+      localStorage.removeItem("user");
+      window.location.replace('/')
     }
     
   }
